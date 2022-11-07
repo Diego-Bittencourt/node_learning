@@ -16,6 +16,7 @@ const http = require('http');
 const server = http.createServer((req, res) => {
 //you can use anonimous function or arrow function in the createServer();
  console.log(req);
+ //this creates a event listener that keep the server in the Event loop
 });
 
 server.listen(3000);
