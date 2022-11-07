@@ -15,8 +15,14 @@ const http = require('http');
 //everytime is gets a request, it will call the function in the argument to deal with those requests
 const server = http.createServer((req, res) => {
 //you can use anonimous function or arrow function in the createServer();
- console.log(req);
+ console.log(req.url, req.method, req.headers);
  //this creates a event listener that keep the server in the Event loop
+ res.setHeader('Content-Type', 'text/html');
+ res.write("<html>");
+ res.write("<head><title>My first server response</title></head>");
+ res.write("<body><h1>Hello from my Node.js server</h1></body>");
+ res.write("</html>");
+ res.end();
 });
 
 server.listen(3000);
