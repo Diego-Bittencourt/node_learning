@@ -6,11 +6,18 @@
 //importing http module
 const http = require('http');
 
-function rqListener(req, res) {
-// this function is created to be dealed with request and response, in this order.
+// function rqListener(req, res) {
+// // this function is created to be dealed with request and response, in this order.
 
-}
+// }
 
 //the create Server function requires a function nomination as argument. 
 //everytime is gets a request, it will call the function in the argument to deal with those requests
-http.createServer(rqListener);
+const server = http.createServer((req, res) => {
+//you can use anonimous function or arrow function in the createServer();
+ console.log(req);
+});
+
+server.listen(3000);
+
+//put the createServer in a constant and use the method listen to keep a loop listening to any requests.
