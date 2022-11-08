@@ -34,8 +34,31 @@ if (url === '/') {
 if (url === '/message' && method === 'POST') {
     //check is the url from the http req is the '/message' and the method is POST
 
-    //creating a file upon http request in which is written DUMMY
-    fs.writeFileSync('message.txt', 'DUMMY');
+    const body = [];
+
+    //creating an event listener to everytime there is data available to read on the buffer
+    req.on('data', (chunk) => {
+        console.log(chunk);
+        body.push(chunk);
+    })
+
+    //creating an event listener to the end of the data stream
+    req.on('end', () => {
+        //using the buffer global object available by Node.js
+        const parsedBody = Buffer.concat(body).toString();
+
+        //output: message=Hello+Server
+        console.log(parsedBody);
+
+        //storing the message data in a const
+        const message = parsedBody.split('=')[1];
+
+        //creating a file upon http request in which is written DUMMY
+        //this has to be inside the req.on('end') because this code runs at the end. 
+        fs.writeFileSync('message.txt', message);
+        //file written: Hello+Server
+    })
+
     //setting the status Code to 302 that means redirected
     res.statusCode = 302;
 
