@@ -20,10 +20,15 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
     console.log("in the second middleware");
+
+    //sending a response
+    res.send('<h1>Hello from express.js</h1>');
 });
 
 
 //add the app to the createServer() without the parenthesys.
-const server = http.createServer(app);
+// const server = http.createServer(app);
+// server.listen(3000);
 
-server.listen(3000);
+//creating the server and listening to the port 3000
+app.listen(3000);
