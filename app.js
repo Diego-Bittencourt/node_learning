@@ -1,14 +1,16 @@
 //importing http module
 const http = require("http");
 
-//import the routers.js file's function
-const routes = require('./routes');
-//it's not necessary to add the file's extension.
+//importing express
+const express = require('express');
+
+//create an app using express()
+const app = express();
 
 
 
 
-//add the created function to the createServer() without the parenthesys.
-const server = http.createServer(routes.handler);
+//add the app to the createServer() without the parenthesys.
+const server = http.createServer(app);
 
 server.listen(3000);
