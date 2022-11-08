@@ -84,5 +84,5 @@ this can be accessed as require(routes.handler)
 exports.handler = requestHandler;
 exports.someText = "Something goes here";
 
-//the exports word is optional.
+//the module word is optional.
 
