@@ -11,14 +11,16 @@ const app = express();
 //after declaring the app and before passing to the server, you can use express to add more
 //middleware functions
 
-app.use((req, res, next) => {
-    console.log("in the middleware");
 
-    //next() must be called to let the request to travel to the next middleware in line
-    next();
+app.use('/add-product', (req, res, next) => {
+    console.log("in the second middleware");
+
+    //sending a response
+    res.send('<h1>Hello from the store</h1>');
 });
 
-app.use((req, res, next) => {
+
+app.use('/', (req, res, next) => {
     console.log("in the second middleware");
 
     //sending a response
