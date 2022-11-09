@@ -4,25 +4,28 @@ const http = require("http");
 //importing express
 const express = require('express');
 
+//import body-parser
+const bodyParser = require('body-parser');
+
 //create an app using express()
 const app = express();
 
-//express creates a set of middleware function that deal with the request/response logic
-//after declaring the app and before passing to the server, you can use express to add more
-//middleware functions
+//add the bodyParser and using it as middleware BEFORE all other middlewares to have access to the body
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 app.use('/add-product', (req, res, next) => {
-    console.log("in the second middleware");
-
-    //sending a response
-    res.send('<h1>Hello from the store</h1>');
+    //sending the form
+    res.send('<form action="/product" method="POST"><input type="text" name="title" /><button type="submit">Add Product</button></form>');
 });
 
+app.use('/product', (req, res, next) => {
+    //the req.body is a new field creted by express.js
+    console.log(req.body);
+    res.redirect('/');
+})
 
 app.use('/', (req, res, next) => {
-    console.log("in the second middleware");
-
     //sending a response
     res.send('<h1>Hello from express.js</h1>');
 });
