@@ -24,10 +24,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //use the admin routes in another file
 //still, the order matters
-app.use(adminRoutes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 
+//catch all requests with invalid url
 app.use((req, res, next) => {
     res.status(404).send('<h1>Page not Found</h1>');
 })
