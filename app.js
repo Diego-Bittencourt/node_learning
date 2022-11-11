@@ -25,6 +25,11 @@ const shopRoutes = require('./routes/shop');
 //add the bodyParser and using it as middleware BEFORE all other middlewares to have access to the body
 app.use(bodyParser.urlencoded({extended: false}));
 
+//use the middleware to have access to all system files
+//with the syntax below, the user have access to files statically
+app.use(express.static(path.join(__dirname, 'public')));
+//the middleware above redirects the request to the public folder.
+
 //use the admin routes in another file
 //still, the order matters
 app.use('/admin', adminRoutes);
@@ -33,7 +38,7 @@ app.use(shopRoutes);
 
 //catch all requests with invalid url
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', 'error404.html'));
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 })
 
 //add the app to the createServer() without the parenthesys.
