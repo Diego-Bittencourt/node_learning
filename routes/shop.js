@@ -9,16 +9,10 @@ const router = express.Router();
 
 
 router.get('/', (req, res, next) => {
-    //the data below is coming from the admin.js file. 
-    //This is data that is inherited in the server, so all users get the same data
-    //it is usually NOT what you want. In rare occasions this might be useful
-    console.log(adminData.products)
-
-    //sending a file as response. the url must be absolute, not relative
-    res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));
-    //the __dirname global variable that contains the absolute path to the folder it is called
-    //in this case, the routes folder
-    //it is important to use the path() method cuz it assures the path is correct for all OS
+    //the render method uses the template engine to run a template
+   res.render('shop');
+   //It's not necessary to tell the path because the template engine tells the path and
+   //also, don't need to add the extension because this is the default, stated in the app.js file in the app.set() method
 });
 
 module.exports = router;

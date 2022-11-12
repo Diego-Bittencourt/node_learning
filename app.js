@@ -4,6 +4,7 @@ const http = require("http");
 //importing express
 const express = require('express');
 
+
 //import body-parser
 const bodyParser = require('body-parser');
 
@@ -13,6 +14,10 @@ const path = require('path');
 //create an app using express()
 const app = express();
 
+//installed three template engines: ejs, pug and express-handlebars
+//those are template engines that would help to write html with dynamic data
+app.set('view engine', 'pug'); //tell express to use pug as template engine
+app.set('views', 'views'); //tell express where is the folder to use those template. views folder is the default
 
 
 
