@@ -11,12 +11,19 @@ const bodyParser = require('body-parser');
 //import the path module
 const path = require('path');
 
+//importing handlebars after installing the latest stable version 3.0
+const expressHbs = require('express-handlebars');
+
 //create an app using express()
 const app = express();
 
+//using the engine method to set the express-handlebars engine
+app.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'}));
+//the first string in the function, will be the filename extensions
+
 //installed three template engines: ejs, pug and express-handlebars
 //those are template engines that would help to write html with dynamic data
-app.set('view engine', 'pug'); //tell express to use pug as template engine
+app.set('view engine', 'hbs'); //tell express to use pug as template engine
 app.set('views', 'views'); //tell express where is the folder to use those template. views folder is the default
 
 
