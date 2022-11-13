@@ -19,7 +19,7 @@ const products = [];
 //the /admin segment of the url was already filtered in the app.js file and don't use it here.
 //filtering for /admin/add-product => GET
 router.get('/add-product', (req, res, next) => {
-    res.render('add-product', { pageTitle: 'Add Product' });
+    res.render('add-product', { pageTitle: 'Add Product', pageTitle: 'Add Product', path: '/admin/add-product' });
 });
 
 //filtering for /admin/add-product => POST
