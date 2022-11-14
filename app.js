@@ -24,12 +24,15 @@ app.set('views', 'views'); //tell express where is the folder to use those templ
 
 
 //import routes
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 
 //add the bodyParser and using it as middleware BEFORE all other middlewares to have access to the body
 app.use(bodyParser.urlencoded({extended: false}));
+
+//import the error controller
+const errorController = require('./controllers/error');
 
 //use the middleware to have access to all system files
 //with the syntax below, the user have access to files statically
@@ -38,14 +41,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //use the admin routes in another file
 //still, the order matters
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 
 //catch all requests with invalid url
-app.use((req, res, next) => {
-    res.status(404).render("404", { pageTitle: 'Oops...'});
-})
+app.use(errorController.get404);
 
 //add the app to the createServer() without the parenthesys.
 // const server = http.createServer(app);
