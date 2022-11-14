@@ -1,5 +1,4 @@
-//create an variable to store incoming data
-const products = [];
+const Product = require('../models.product');
 
 
 exports.getAddProduct = (req, res, next) => {
@@ -14,13 +13,14 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-    //the req.body is a new field creted by express.js
-    products.push({ title: req.body.title })
+    const product = new Product(req.body.title);
+    product.save();
     res.redirect('/');
 };
 
 
 exports.getProducts = (req, res, next) => {
+    const products = Product.fetchAll();
     //the render method uses the template engine to run a template
     //you can pass data to the render method by adding a second argument with an object and a key name at your choice
     res.render('shop', { prods: products, pageTitle: "Shop", path: '/', hasProducts: products.length > 0, activeShop: true, productCSS: true });
