@@ -2,7 +2,7 @@ const Product = require('../models/product');
 
 
 exports.getAddProduct = (req, res, next) => {
-    res.render('add-product', {
+    res.render('admin/add-product', {
         pageTitle: 'Add Product', 
         path: '/admin/add-product', 
         activeAddProduct: true, 
@@ -25,7 +25,7 @@ exports.getProducts = (req, res, next) => {
     //it's the same approach in the readFile(), although I had to write both sides here
     Product.fetchAll((products) => {
         //fetchAll is going to run this arrow function when it's done.
-        res.render('shop', { 
+        res.render('shop/product-list', { 
             prods: products, 
             pageTitle: 'Shop', 
             path: '/', 
