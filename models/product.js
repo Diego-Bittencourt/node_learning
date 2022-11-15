@@ -6,7 +6,7 @@ const path = require('path');
 
 //create global variable to hold the path
 const p = path.join(
-    path.dirname(process.mainModule.filename),
+    path.dirname(require.main.filename),
     'data',
     'products.json'
     );
