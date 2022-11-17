@@ -67,3 +67,10 @@ exports.getEditProducts = (req, res, next) => {
         path: '/admin/products'
     })
 };
+
+exports.getOrders = (req, res, next) => {
+    res.render('shop/orders', {
+        pageTitle: 'Orders',
+        path: '/orders'
+    })
+};
