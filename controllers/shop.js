@@ -60,6 +60,14 @@ exports.getProductDetails = (req, res, next) => {
     })
 };
 
+exports.getProduct = (req, res, next) => {
+    //extracting the dynamic segment in the url
+    //  /products/:productId;
+    const prodId = req.params.productId;
+    console.log(prodId);
+    res.redirect('/');
+};
+
 
 exports.getEditProducts = (req, res, next) => {
     res.render('admin/edit-product', {
@@ -74,3 +82,4 @@ exports.getOrders = (req, res, next) => {
         path: '/orders'
     })
 };
+
