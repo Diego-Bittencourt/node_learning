@@ -64,8 +64,9 @@ exports.getProduct = (req, res, next) => {
     //extracting the dynamic segment in the url
     //  /products/:productId;
     const prodId = req.params.productId;
-    console.log(prodId);
-    res.redirect('/');
+    Product.findById(prodId, product => {
+        console.log(product);
+    });
 };
 
 
