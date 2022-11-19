@@ -43,6 +43,13 @@ exports.getCart = (req, res, next) => {
     })
 };
 
+//send data to the cart
+exports.postCart = (req, res, next) => {
+    const prodId = req.body.productId;
+    console.log(prodId);
+    res.redirect('/cart');
+};
+
 
 //grab the check out url
 exports.getCheckOut = (req, res, next) => {

@@ -11,9 +11,9 @@
     </div>  
     <h2>$<%= product.price %></h2>
     <p><%= product.description %></p>
-    <form action="/cart" method="POST">
-        <button class="btn" type="submit">Add to Cart</button>
-    </form>
+    <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+    <!-- when using a loop and include inside it, you need to pass the local variable
+    as a second argument to the includes() function as above.-->
 </main>
 
 <%- include('../includes/end.ejs') %>

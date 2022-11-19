@@ -1,0 +1,8 @@
+<form action="/cart" method="POST">
+    <button class="btn" type="submit">Add to Cart</button>
+    <input type="hidden" name="productId" value="<%= product.id %>" />
+    <!-- In post requests, you can add data in the request's body.
+    Therefore, I created a hidden input to send the product's id to the backend
+    I could use the same approach I used to the details page, inserting dynamic data
+    in the url, but it's not necessary-->
+</form>

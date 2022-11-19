@@ -13,6 +13,7 @@ router.get('/products', shopController.getProducts);
 router.get('/products/:productId', shopController.getProduct); //assign a dynamic value started by a colon : Just like Vue.
 //to add a normal like (/product/delete) it shoudl come before the dynamic route.
 router.get('/cart', shopController.getCart);
+router.post('/cart', shopController.postCart);
 router.get('/checkout', shopController.getCheckOut);
 router.get('/orders', shopController.getOrders);
 
