@@ -53,19 +53,26 @@ exports.getCheckOut = (req, res, next) => {
 };
 
 //grab the product details
+/*
 exports.getProductDetails = (req, res, next) => {
     res.render('shop/product-details', {
         pageTitle: 'Details',
         path: 'shop/product-detail'
     })
 };
+*/
 
 exports.getProduct = (req, res, next) => {
     //extracting the dynamic segment in the url
     //  /products/:productId;
     const prodId = req.params.productId;
     Product.findById(prodId, product => {
-        console.log(product);
+        //console.log(product);
+        res.render('shop/product-detail', {
+            product: product,
+            pageTitle: product.title,
+            path: '/shop/product-detail'
+        })
     });
 };
 
