@@ -19,13 +19,12 @@
             <div class="form-control">
                 <label for="price">Price</label>
                 <input type="number" name="price" id="price" step="0.01">
-                <!--the step key is about decimal fields. In the tag above, it accepts two decimal fields. -->
             </div>
             <div class="form-control">
                 <label for="description">Description</label>
                 <textarea name="description" id="description" rows="6"></textarea>
             </div>
-
+            
             <button class="btn" type="submit"><% if(editing) { %>Update Product <% } else { %>Add Product<% } %></button>
         </form>
     </main>
