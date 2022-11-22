@@ -4,6 +4,9 @@ const fs = require('fs');
 //import the path module to successfully work with files in any OS
 const path = require('path');
 
+//import the cart
+const Cart = require('./cart');
+
 //create global variable to hold the path
 const p = path.join(
     path.dirname(require.main.filename),
@@ -37,7 +40,7 @@ module.exports = class Product {
         this.imageUrl = imageUrl;
         this.description = description;
         this.price = price;
-    }
+    }; //end constructor
 
     save() {
         getProductsFromFile(products => {
@@ -57,16 +60,34 @@ module.exports = class Product {
                 });
             }
         });
-    }
+    }; //end save()
+
+
+    static deleteById(id) {
+        getProductsFromFile(products => {
+            const product = products.find(prod => prod.id === id);
+            const updatedProducts = products.filter(p => p.id !== id);
+            fs.writeFile(p, JSON.stringify(updatedProducts), err => {
+                if (!err) {
+                    Cart.deleteProduct(id, product.price);
+                }
+            })
+
+        })
+        
+    }; //end delete()
+
 
     static fetchAll(cb) {
         getProductsFromFile(cb);
-    }
+    };
 
     static findById(id, cb) {
         getProductsFromFile(products => {
             const product = products.find(p => p.id === id);
             cb(product);
         });
-    }
-}
+    };//end findById
+
+    
+}; 
